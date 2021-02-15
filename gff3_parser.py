@@ -71,7 +71,8 @@ def extract_gene_from_file(filename):
 			print(f"{each_gene['chrom']}\t{each_gene['start']}\t{each_gene['end']}\t{each_gene['info']['gene_name']}\t\t")
 
 if __name__ == "__main__":
-	sys.exit() if len(sys.argv) < 2
+	if len(sys.argv) < 2:
+		sys.exit()
 	print(f"{sys.argv[1]} was given", file = sys.stderr)
 	allrecord = gff3_parser(sys.argv[1])
 	for each_annotation in allrecord:
