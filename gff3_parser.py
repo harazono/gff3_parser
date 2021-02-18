@@ -54,7 +54,8 @@ def gff3_parser(filename):
 def gff3toBed(gff3_array):
 	bed4_array = []
 	for line in gff3_array:
-		bed4_array.append("\t".join([line.seqname, str(line.start), str(line.end), ":".join([line.seqname, line.feature, line.group["gene_name"], str(line.start), str(line.end)])]))
+		if int(line.end) - int(line.start) >= 100:
+			bed4_array.append("\t".join([line.seqname, str(line.start), str(line.end), ":".join([line.seqname, line.feature, line.group["gene_name"], str(line.start), str(line.end)])]))
 	return bed4_array
 
 
